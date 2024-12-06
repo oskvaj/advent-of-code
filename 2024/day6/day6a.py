@@ -5,9 +5,6 @@ def increseDirIndex(index):
         index = 0
     return index
 
-#Hej Sebastian
-#här är en kommentar
-
 with open("2024/day6/day_6_input.txt", "r") as file:
     rawData = file.read().split()
 data = [[char for char in row] for row in rawData]
