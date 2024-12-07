@@ -1,0 +1,53 @@
+import time
+
+start = time.time()
+
+with open('2024/day7/day_7_input.txt', 'r') as file:
+	dataRaw = file.readlines()
+
+data = [item.strip().split(":") for item in dataRaw]
+for item in data:
+	item[1] = item[1].split()
+	item[1] = [int(x) for x in item[1]]
+	item[0] = int(item[0])
+
+#Sebbes fusk sätt att göra det
+#data = [[int(answer), list(map(int, nums.split()))] for answer, nums in data]
+
+def AllVariations(numberVariations: list[int], allowedOperators: list[str], currentNumber: int, howFarBack: int):
+	copyOfnumberVariations = numberVariations.copy()
+	if(len(numberVariations) == 0):
+		numberVariations.append(currentNumber)
+	elif(len(numberVariations) == 1):
+		for item in allowedOperators:
+			if item == "+":
+				numberVariations.append(copyOfnumberVariations[len(copyOfnumberVariations)-1] + currentNumber)
+			elif item == "*":
+				numberVariations.append(copyOfnumberVariations[len(copyOfnumberVariations)-1] * currentNumber)
+			elif item == "||":
+				numberVariations.append(int(str(copyOfnumberVariations[len(copyOfnumberVariations)-1])+(str(currentNumber))))
+	else:
+		for item in allowedOperators:
+			if item == "+":
+				for i in range(howFarBack):
+					numberVariations.append(copyOfnumberVariations[len(copyOfnumberVariations)-1-i] + currentNumber)
+			elif item == "*":
+				for i in range(howFarBack):
+					numberVariations.append(copyOfnumberVariations[len(copyOfnumberVariations)-1-i] * currentNumber)
+			elif item == "||":
+				for i in range(howFarBack):
+					numberVariations.append(int(str(copyOfnumberVariations[len(copyOfnumberVariations)-1-i])+(str(currentNumber))))
+
+allowedOperators = ["+", "*", "||"]
+
+sum = 0
+for answer, nums in data:
+	numberVariations = []
+	for i, num in enumerate(nums):
+		AllVariations(numberVariations, allowedOperators, num, 3**(i-1))
+	if(answer in numberVariations[-(3**(len(nums)-1)):]):
+		sum += answer
+
+end = time.time()
+
+print(sum, end-start, "sekunder")

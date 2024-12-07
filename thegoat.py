@@ -31,13 +31,13 @@ with open(f"{folder_path}/{input_path}", "w") as file:
 if not os.path.exists(f"{folder_path}/{problem_path}a.py"):
     with open(f"{folder_path}/{problem_path}a.py", "w") as file:
         file.write(
-            f"with open('{folder_path}/{input_path}', 'r') as file:\n\tdata = file.read()"
+            f"with open('{folder_path}/{input_path}', 'r') as file:\n\tdataRaw = file.read()\n\ndata=[]"
         )
 
 if not os.path.exists(f"{folder_path}/{problem_path}b.py"):
     with open(f"{folder_path}/{problem_path}b.py", "w") as file:
         file.write(
-            f"with open('{folder_path}/{input_path}', 'r') as file:\n\tdata = file.read()"
+            f"with open('{folder_path}/{input_path}', 'r') as file:\n\tdataRaw = file.read()\n\ndata=[]"
         )
 
 print("Success")
