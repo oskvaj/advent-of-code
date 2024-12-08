@@ -32,9 +32,9 @@ file_template = f"""import time
 start_time = time.time()
 
 with open('{folder_path}/{input_path}', 'r') as file:
-    dataRaw = file.read()
+    raw_data = file.read()
 
-data = [item for item in dataRaw]
+data = [item for item in raw_data]
 
 for item in data:
     print(item)
