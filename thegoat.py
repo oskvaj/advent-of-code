@@ -28,16 +28,27 @@ if not os.path.exists(folder_path):
 with open(f"{folder_path}/{input_path}", "w") as file:
     file.write(todays_input)
 
+file_template = f"""import time
+start_time = time.time()
+
+with open('{folder_path}/{input_path}', 'r') as file:
+    dataRaw = file.read()
+
+data = [item for item in dataRaw]
+
+for item in data:
+    print(item)
+
+end_time = time.time()
+print(f'Time took: {"{round((end_time - start_time) * 1000, 2)}"}ms')
+"""
+
 if not os.path.exists(f"{folder_path}/{problem_path}a.py"):
     with open(f"{folder_path}/{problem_path}a.py", "w") as file:
-        file.write(
-            f"import time\nstart = time.time()\n\nwith open('{folder_path}/{input_path}', 'r') as file:\n\tdataRaw = file.read()\n\ndata=[]\n\n\n\nend = time.time()"
-        )
+        file.write(file_template)
 
 if not os.path.exists(f"{folder_path}/{problem_path}b.py"):
     with open(f"{folder_path}/{problem_path}b.py", "w") as file:
-        file.write(
-            f"import time\nstart = time.time()\n\nwith open('{folder_path}/{input_path}', 'r') as file:\n\tdataRaw = file.read()\n\ndata=[]\n\n\n\nend = time.time()"
-        )
+        file.write(file_template)
 
 print("Success")
