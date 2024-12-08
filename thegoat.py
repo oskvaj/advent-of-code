@@ -29,6 +29,8 @@ with open(f"{folder_path}/{input_path}", "w") as file:
     file.write(todays_input)
 
 file_template = f"""import time
+
+
 start_time = time.time()
 
 with open('{folder_path}/{input_path}', 'r') as file:
