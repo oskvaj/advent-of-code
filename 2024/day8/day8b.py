@@ -38,8 +38,6 @@ for i, row in enumerate(data):
 							if([xcord1,ycord1] != [xcord2,ycord2]):
 								intersections.add(str(j)+","+str(i))
 
-
-
 print(len(intersections))
 
 end = time.time()
