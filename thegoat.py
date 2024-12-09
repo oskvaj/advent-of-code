@@ -32,7 +32,6 @@ file_template = f"""import time
 
 
 start_time = time.time()
-
 with open('{folder_path}/{input_path}', 'r') as file:
     raw_data = file.read()
 
