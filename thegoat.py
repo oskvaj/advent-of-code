@@ -41,7 +41,7 @@ for item in data:
     print(item)
 
 end_time = time.time()
-print(f'Time took: {"{round((end_time - start_time), 0)}"}sec and {"{round((end_time - start_time) * 1000, 2)}"}ms')
+print(f'Time took: {"{round(end_time - start_time)}"}sec and {"{round((round((end_time - start_time) * 1000, 2))%1000.0, 2)}"}ms')
 """
 
 if not os.path.exists(f"{folder_path}/{problem_path}a.py"):
