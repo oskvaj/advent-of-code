@@ -41,3 +41,4 @@ print(
 )
 
 # 133ms
+# hade tagit 56 år och 6 månader med lösning från part a med 75 istället för 25
