@@ -35,8 +35,7 @@ for i in range(len(data) + 1):
 def find_combinations(
     button_a: tuple[int, int], button_b: tuple[int, int], destination: tuple[int, int]
 ) -> int:
-    matrix1 = np.array([[button_a[0], button_b[0]], [button_a[1], button_b[1]]])
-    matrix1 = np.linalg.inv(matrix1)
+    matrix1 = np.linalg.inv(np.array([[button_a[0], button_b[0]], [button_a[1], button_b[1]]]))
     matrix2 = np.array([[destination[0]], [destination[1]]])
     result = np.matmul(matrix1, matrix2)
 
