@@ -1,4 +1,4 @@
-with open('C:/Users/oskar/OneDrive/Documents/Prog/AdventOfCode2024/Day1Input.txt', 'r') as file:
+with open("2024/day1/Day1Input.txt", "r") as file:
     data = file.readlines()
     leftSide = []
     rightSide = []
