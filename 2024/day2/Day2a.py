@@ -1,10 +1,9 @@
-with open(
-    "C:/Users/oskar/OneDrive/Documents/Prog/AdventOfCode2024/day2/Day2Input.txt", "r"
-) as file:
+with open("2024/day2/Day2Input.txt", "r") as file:
     rawData = file.readlines()
-    data = []
-    for item in rawData:
-        data.append(item.split())
+
+data = []
+for item in rawData:
+    data.append(item.split())
 
 sum = 0
 for line in data:

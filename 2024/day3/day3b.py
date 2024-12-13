@@ -2,6 +2,7 @@ import re
 
 with open("2024/day3/day_3_input.txt", "r") as file:
     rawData = file.readlines()
+
 data = []
 for i in rawData:
     temp = []
