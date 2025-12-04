@@ -33,8 +33,9 @@ file_template = f"""import time
 
 start_time = time.time()
 with open('{folder_path}/{input_path}', 'r') as file:
-    raw_data = file.read()
+    raw_data = file.read().strip().splitlines()
 
+grid = [list(row) for row in raw_data]
 data = [item for item in raw_data]
 
 for item in data:
