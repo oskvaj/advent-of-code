@@ -29,4 +29,4 @@ end_time = time.time()
 print(
     f"Time took: {round(end_time - start_time)}sec and {round((round((end_time - start_time) * 1000, 2))%1000.0, 2)}ms"
 )
-# Time took: 0sec and 14.54ms
+# Time took: 0sec and 1.74ms
