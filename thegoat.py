@@ -31,7 +31,7 @@ with open(f"{folder_path}/{input_path}", "w") as file:
 file_template = f"""import time
 
 
-start_time = time.time()
+start_time = time.perf_counter()
 with open('{folder_path}/{input_path}', 'r') as file:
     raw_data = file.read().strip().splitlines()
 
@@ -41,7 +41,7 @@ data = [item for item in raw_data]
 for item in data:
     print(item)
 
-end_time = time.time()
+end_time = time.perf_counter()
 print(f'Time took: {"{round(end_time - start_time)}"}sec and {"{round((round((end_time - start_time) * 1000, 2))%1000.0, 2)}"}ms')
 """
 
