@@ -23,7 +23,7 @@ for i in range(len(data)):
 networks: dict[int, list[tuple[int, int, int]]] = {}
 poles_to_networks: dict[tuple[int, int, int], int] = {}
 network_identifiers: int = 1
-for i in range(1000):
+while not q.empty():
     d, point1, point2 = q.get()
     if point1 not in poles_to_networks and point2 not in poles_to_networks:
         # none of them are in a network
@@ -35,10 +35,16 @@ for i in range(1000):
         # point 1 in a network, but 2 isn't
         networks[poles_to_networks[point1]].append(point2)
         poles_to_networks[point2] = poles_to_networks[point1]
+        if len(networks[poles_to_networks[point1]]) == len(data):
+            print(point1[0] * point2[0])
+            break
     elif point1 not in poles_to_networks and point2 in poles_to_networks:
         # point 1 not in a network, but 2 is
         networks[poles_to_networks[point2]].append(point1)
         poles_to_networks[point1] = poles_to_networks[point2]
+        if len(networks[poles_to_networks[point1]]) == len(data):
+            print(point1[0] * point2[0])
+            break
     else:
         # both are in separate networks
         p1id = poles_to_networks[point1]
@@ -47,6 +53,9 @@ for i in range(1000):
             continue
         affected_poles = networks[p2id]
         networks[p1id].extend(affected_poles)
+        if len(networks[poles_to_networks[point1]]) == len(data):
+            print(point1[0] * point2[0])
+            break
         networks.pop(p2id)
         for pole in affected_poles:
             poles_to_networks[pole] = p1id
@@ -57,10 +66,8 @@ for value in networks.values():
 
 network_sizes.sort(reverse=True)
 
-print(network_sizes[0] * network_sizes[1] * network_sizes[2])
-
 end_time = time.time()
 print(
     f"Time took: {round(end_time - start_time)}sec and {round((round((end_time - start_time) * 1000, 2))%1000.0, 2)}ms"
 )
-# Time took: 1sec and 857.01ms
+# Time took: 1sec and 852.37ms
