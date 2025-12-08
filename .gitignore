@@ -1,2 +1,2 @@
-temptext.txt
-.env
+*.txt
+*.env
