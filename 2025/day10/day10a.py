@@ -1,4 +1,5 @@
 import time
+from functools import lru_cache
 
 start_time = time.perf_counter()
 with open("2025/day10/day_10_input.txt", "r") as file:
@@ -11,8 +12,9 @@ button_list = [
 ]
 
 
+@lru_cache(maxsize=None)
 def find_shortest_combo(
-    start: list[int], buttons: list[list[int]], depth: int
+    start: tuple, buttons: tuple[tuple], depth: int
 ) -> list[list[int]]:
     if depth > 1:
         returned_results = find_shortest_combo(start, buttons, depth - 1)
@@ -27,7 +29,7 @@ def find_shortest_combo(
     else:
         results = []
         for button in buttons:
-            temp = start.copy()
+            temp = list(start).copy()
             for digit in button:
                 temp[digit] = (temp[digit] + 1) % 2
             results.append(temp)
@@ -38,7 +40,9 @@ smallest_combination_sum = 0
 for goal, buttons in zip(goals, button_list):
     i = 1
     while True:
-        results = find_shortest_combo([0 for _ in goal], buttons, i)
+        results = find_shortest_combo(
+            tuple([0 for _ in goal]), tuple(tuple(b) for b in buttons), i
+        )
         if goal in results:
             smallest_combination_sum += i
             break
@@ -52,4 +56,4 @@ end_time = time.perf_counter()
 print(
     f"Time took: {round(end_time - start_time)}sec and {round((round((end_time - start_time) * 1000, 2))%1000.0, 2)}ms"
 )
-# Time took: 20sec and 231.85ms
+# Time took: 16sec and 217.75ms

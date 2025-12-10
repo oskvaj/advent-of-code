@@ -37,4 +37,4 @@ end_time = time.perf_counter()
 print(
     f"Time took: {round(end_time - start_time)}sec and {round((round((end_time - start_time) * 1000, 2))%1000.0, 2)}ms"
 )
-# Time took: 0sec and 7.89ms
+# Time took: 0sec and 7.61ms
