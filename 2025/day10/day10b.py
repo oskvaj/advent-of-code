@@ -12,18 +12,10 @@ button_list_raw = [
 ]
 joltages = [list(map(int, item[-1][1:-1].split(","))) for item in data]
 
-button_vectors = []
-for goal, button_list in zip(goals, button_list_raw):
-    inner_vectors = []
-    for button in button_list:
-        this_vector = []
-        for i in range(goal):
-            if i in button:
-                this_vector.append(1)
-            else:
-                this_vector.append(0)
-        inner_vectors.append(this_vector)
-    button_vectors.append(inner_vectors)
+button_vectors = [
+    [[1 if i in button else 0 for i in range(goal)] for button in button_list]
+    for goal, button_list in zip(goals, button_list_raw)
+]
 
 
 def find_min_coefficients(goal, vectors):
