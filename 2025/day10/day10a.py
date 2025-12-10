@@ -5,14 +5,10 @@ with open("2025/day10/day_10_input.txt", "r") as file:
     raw_data = file.read().strip().splitlines()
 
 data = [tuple(x for x in item.split()) for item in raw_data]
-goals = []
-button_list = []
-
-for item in data:
-    goals.append([0 if char == "." else 1 for char in item[0][1:-1]])
-    button_list.append(
-        [list(map(int, button[1:-1].split(","))) for button in item[1:-1]]
-    )
+goals = [[0 if char == "." else 1 for char in item[0][1:-1]] for item in data]
+button_list = [
+    [list(map(int, button[1:-1].split(","))) for button in item[1:-1]] for item in data
+]
 
 
 def find_shortest_combo(

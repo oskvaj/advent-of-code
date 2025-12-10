@@ -6,16 +6,11 @@ with open("2025/day10/day_10_input.txt", "r") as file:
     raw_data = file.read().strip().splitlines()
 
 data = [tuple(x for x in item.split()) for item in raw_data]
-goals = []
-button_list_raw = []
-joltages = []
-
-for item in data:
-    goals.append(len(item[0][1:-1]))
-    button_list_raw.append(
-        [list(map(int, button[1:-1].split(","))) for button in item[1:-1]]
-    )
-    joltages.append(list(map(int, item[-1][1:-1].split(","))))
+goals = [len(item[0][1:-1]) for item in data]
+button_list_raw = [
+    [list(map(int, button[1:-1].split(","))) for button in item[1:-1]] for item in data
+]
+joltages = [list(map(int, item[-1][1:-1].split(","))) for item in data]
 
 button_vectors = []
 for goal, button_list in zip(goals, button_list_raw):
