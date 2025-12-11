@@ -188,10 +188,10 @@ for dataRow in originalData:
             if shouldBeSummized:
                 if acceptableInput[3] and originalData[counter][counter2 + 1].isdigit():
                     shouldKeepInMind = True
-                if shouldKeepInMind == False:
+                if shouldKeepInMind is False:
                     number = re.findall(r"\d+", dataRow)
                     sum += int(number[amountOfGoodNumbersInThisRow])
-            if shouldKeepInMind == False:
+            if shouldKeepInMind is False:
                 shouldBeSummized = False
 
             if acceptableInput[3] and not originalData[counter][counter2 + 1].isdigit():
