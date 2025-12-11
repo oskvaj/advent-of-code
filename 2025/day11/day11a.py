@@ -5,7 +5,7 @@ start_time = time.perf_counter()
 with open("2025/day11/day_11_input.txt", "r") as file:
     data = file.read().strip().splitlines()
 
-server_to_connections = {}
+server_to_connections: dict[str, list[str]] = {}
 for item in data:
     server, connections = item.split(":")
     server_to_connections[server] = connections.split()
