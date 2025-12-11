@@ -3,14 +3,12 @@ from functools import lru_cache
 
 start_time = time.perf_counter()
 with open("2025/day11/day_11_input.txt", "r") as file:
-    raw_data = file.read().strip().splitlines()
+    data = file.read().strip().splitlines()
 
-data = [list(x for x in item.split(":")) for item in raw_data]
-connections = [list(x for x in item[1].split()) for item in data]
-servers = [item[0] for item in data]
-server_to_connections: dict[str, list[str]] = {}
-for s, cs in zip(servers, connections):
-    server_to_connections[s] = cs
+server_to_connections = {}
+for item in data:
+    server, connections = item.split(":")
+    server_to_connections[server] = connections.split()
 
 
 @lru_cache(maxsize=None)
@@ -39,4 +37,4 @@ end_time = time.perf_counter()
 print(
     f"Time took: {round(end_time - start_time)}sec and {round((round((end_time - start_time) * 1000, 2))%1000.0, 2)}ms"
 )
-# Time took: 0sec and 2.04ms
+# Time took: 0sec and 1.98ms
