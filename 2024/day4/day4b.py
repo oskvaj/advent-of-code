@@ -1,3 +1,6 @@
+import time
+
+
 def BackslashRegular(data, i, j):
     if data[i - 1][j - 1] == "M" and data[i + 1][j + 1] == "S":
         return True
@@ -22,6 +25,7 @@ def SlashReverse(data, i, j):
     return False
 
 
+start_time = time.perf_counter()
 with open("2024/day4/day_4_input.txt", "r") as file:
     rawdata = file.readlines()
 
@@ -50,3 +54,8 @@ for i, row in enumerate(data):
                 if backSlash and slash:
                     sum += 1
 print(sum)
+end_time = time.perf_counter()
+print(
+    f"Time took: {round(end_time - start_time)}sec and {round((round((end_time - start_time) * 1000, 2))%1000.0, 2)}ms"
+)
+# 11.09 ms
