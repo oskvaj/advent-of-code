@@ -1,4 +1,8 @@
-with open("2024/day1/Day1Input.txt", "r") as file:
+import time
+
+
+start_time = time.perf_counter()
+with open("2024/day1/day_1_input.txt", "r") as file:
     data = file.readlines()
 
 leftSide = []
@@ -20,3 +24,8 @@ for i in leftSide:
     sum += temp * similar
 
 print(sum)
+end_time = time.perf_counter()
+print(
+    f"Time took: {round(end_time - start_time)}sec and {round((round((end_time - start_time) * 1000, 2))%1000.0, 2)}ms"
+)
+# 56.16 ms
