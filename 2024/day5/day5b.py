@@ -1,3 +1,6 @@
+import time
+
+start_time = time.perf_counter()
 with open("2024/day5/day_5_input.txt", "r") as file:
     dataRaw = file.read()
 dataRaw = dataRaw.split("\n\n")
@@ -22,3 +25,8 @@ for row in sequences:
     if shouldBeIncluded:
         sum += int(row[int((len(row) - 1) / 2)])
 print(sum)
+end_time = time.perf_counter()
+print(
+    f"Time took: {round(end_time - start_time)}sec and {round((round((end_time - start_time) * 1000, 2))%1000.0, 2)}ms"
+)
+# 2249.44 ms
