@@ -1,3 +1,6 @@
+import time
+
+
 def increseDirIndex(index):
     if index != 3:
         index += 1
@@ -5,6 +8,8 @@ def increseDirIndex(index):
         index = 0
     return index
 
+
+start_time = time.perf_counter()
 with open("2024/day6/day_6_input.txt", "r") as file:
     rawData = file.read().split()
 data = [[char for char in row] for row in rawData]
@@ -78,7 +83,9 @@ while guardIsOnScreen:
         else:
             guardIsOnScreen = False
 
-for item in data:
-    print(item)
-
-print("\n\n", sum)
+print(sum)
+end_time = time.perf_counter()
+print(
+    f"Time took: {round(end_time - start_time)}sec and {round((round((end_time - start_time) * 1000, 2))%1000.0, 2)}ms"
+)
+# 6.92 ms
